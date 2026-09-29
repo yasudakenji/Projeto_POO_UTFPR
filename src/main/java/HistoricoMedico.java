@@ -32,4 +32,12 @@ public class HistoricoMedico {
     public void setQuantVacina(int quantVacina) {
         this.quantVacina = quantVacina;
     }
+
+    @Override
+    public String toString() {
+        return "HistoricoMedico{" +
+                "vacina='" + vacina + '\'' +
+                ", quantVacina=" + quantVacina +
+                '}';
+    }
 }

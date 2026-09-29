@@ -1,8 +1,8 @@
 //Vitor Kenji Soares Yasuda
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public abstract class Gado implements Calculo {
+public abstract class Gado {
 
     private int codigo;
     private float peso;
@@ -11,7 +11,7 @@ public abstract class Gado implements Calculo {
     private String raca;
     private String cor;
     private HistoricoMedico historico;
-    private Date dataCompra;
+    private LocalDate dataCompra;
 
 
     //Polimorfismo por sobrecarga
@@ -22,11 +22,11 @@ public abstract class Gado implements Calculo {
         raca = "";
         cor = "";
         historico = new HistoricoMedico();
-        dataCompra = new Date();
+        dataCompra = LocalDate.now();
 
     }
 
-    public Gado(int codigo, float peso, int idade, String sexo, String raca, String cor, HistoricoMedico historico, Date dataCompra) {
+    public Gado(int codigo, float peso, int idade, String sexo, String raca, String cor, HistoricoMedico historico, LocalDate dataCompra) {
         this.codigo = codigo;
         this.peso = peso;
         this.idade = idade;
@@ -42,11 +42,11 @@ public abstract class Gado implements Calculo {
         return codigo;
     }
 
-    public float getPeso() {
+    public Float getPeso() {
         return peso;
     }
 
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 
@@ -62,19 +62,12 @@ public abstract class Gado implements Calculo {
         return historico;
     }
 
-    public Date getData() {
-        return dataCompra;
-    }
-
 
     public final void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public final void setPeso(float peso) throws PesoException{
-        if(peso<10){
-            throw new PesoException();
-        }
+    public final void setPeso(float peso) {
         this.peso = peso;
     }
 
@@ -86,18 +79,16 @@ public abstract class Gado implements Calculo {
         return sexo;
     }
 
-    public void setIdade(int idade) throws IdadeException {
-        if(idade<1){
-            throw new IdadeException();
-        }
+    public void setIdade(int idade)  {
+
         this.idade = idade;
     }
 
-    public Date getDataCompra() {
+    public LocalDate getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(Date dataCompra) {
+    public void setDataCompra(LocalDate dataCompra) {
         this.dataCompra = dataCompra;
     }
 
@@ -117,11 +108,4 @@ public abstract class Gado implements Calculo {
         this.historico = historico;
     }
 
-    public final void setData(Date dataCompra) {
-        this.dataCompra = dataCompra;
-    }
-
-    public abstract float calculoConfiRacao();
-
-    public abstract int calculoConfiIdade();
 }

@@ -1,6 +1,6 @@
 //Vitor Kenji Soares Yasuda
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Nelore extends Gado {
 
@@ -15,7 +15,7 @@ public class Nelore extends Gado {
         rusticidade = "";
     }
 
-    public Nelore(int codigo, int peso, int idade, String sexo, String raca, String cor, HistoricoMedico historico, Date dataCompra, int ganhoPeso, String nivelAdapt, String rusticidade) {
+    public Nelore(int codigo, int peso, int idade, String sexo, String raca, String cor, HistoricoMedico historico, LocalDate dataCompra, int ganhoPeso, String nivelAdapt, String rusticidade) {
         super(codigo, peso, idade, sexo, raca, cor, historico, dataCompra);
         this.ganhoPeso = ganhoPeso;
         this.nivelAdapt = nivelAdapt;
@@ -44,30 +44,6 @@ public class Nelore extends Gado {
 
     public void setRusticidade(String rusticidade) {
         this.rusticidade = rusticidade;
-    }
-
-    //Polimorfismo por sobrescricao -> sobrescrevendo metodo abstrato
-    public int qtdHist() {
-        return 1; //retorna 1, pois ainda nao foi implementado a lista de historico medico
-    }
-
-    public float calcPastoPeso(float peso) {
-        float pesoIdeal = 500.0f;
-        return (pesoIdeal - peso <= 0) ? 0.0f : pesoIdeal - peso;
-    }
-
-    public int calcPastoIdade(int idade) {
-        int idadeIdeal = 70;
-        return (idadeIdeal - idade <= 0) ? 0 : idadeIdeal - idade;
-    }
-
-    public float calculoConfiRacao() {
-        return (float) (0.03 * getPeso());
-    }
-
-    public int calculoConfiIdade() {
-        int idadeIdeal = 70;
-        return (idadeIdeal - getIdade() <= 0) ? 0 : idadeIdeal - getIdade();
     }
 
 }
